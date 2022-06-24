@@ -1,10 +1,10 @@
-const rule = require("../../../lib/rules/sort-imports");
-const RuleTester = require("eslint").RuleTester;
+const rule = require('../../../lib/rules/sort-imports');
+const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
-    parserOptions: { ecmaVersion: 2020, sourceType: "module" },
+    parserOptions: {ecmaVersion: 2020, sourceType: 'module'},
 });
-ruleTester.run("sort-imports", rule, {
+ruleTester.run('sort-imports', rule, {
     valid: [
         {
             code: `import React from 'react';
@@ -18,14 +18,14 @@ import {IToast, withToaster} from '@scrumble-nl/react-quick-toaster';
 import {redirectTo} from '../../base/routing/partials/routing-util';
 
 import './scss/information-table.scss';
-            `
+            `,
         },
         {
-              code: `import React from "react";
+            code: `import React from "react";
 
 import A from "A";
 import ALong from "ALong";
-        `
+        `,
         },
         {
             code: `import React from 'react';
@@ -40,14 +40,14 @@ import "./test.scss"`,
     YetAnotherLongVariableName,
     MoreLongVariableNames,
 } from "test";
-                        
+
 import A from "./test";`,
-        }
+        },
     ],
 
     invalid: [
         {
-            errors: [{ messageId: "sort", }],
+            errors: [{messageId: 'sort'}],
             output: `import React from 'react';
 import Idk, {Something, Else} from "react-native";
 
@@ -73,11 +73,11 @@ import {IToast, withToaster} from '@scrumble-nl/react-quick-toaster';
 import {redirectTo} from '../../base/routing/partials/routing-util';`,
         },
         {
-            errors: [{messageId: "sort"}],
+            errors: [{messageId: 'sort'}],
             output: `import A from "test";
 import {Test as Different} from "test";`,
             code: `import {Test as Different} from "test";
 import A from "test";`,
-        }
+        },
     ],
 });
