@@ -1,9 +1,13 @@
 const rule = require('../../../lib/rules/sort-imports');
+const plugin = require('../../../lib/plugin');
 const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
-    parserOptions: {ecmaVersion: 2020, sourceType: 'module'},
+    plugins: {
+        'scrumble-rules': plugin,
+    },
 });
+
 ruleTester.run('sort-imports', rule, {
     valid: [
         {
