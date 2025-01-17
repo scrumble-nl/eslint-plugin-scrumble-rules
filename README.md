@@ -18,7 +18,7 @@ npm i@scrumble-nl/eslint-plugin-scrumble-rules --save-dev
 
 ## Usage
 
-Add `@scrumble-nl/scrumble-rules` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `@scrumble-nl/scrumble-rules` to the plugins section of your `.eslintrc` or `eslint.config.mjs` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
@@ -34,7 +34,8 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "@scrumble-nl/scrumble-rules/sort-imports": "warn"
+        "@scrumble-nl/scrumble-rules/sort-imports": "warn",
+        "@scrumble-nl/scrumble-rules/ignore-comment": "warn"
     }
 }
 ```
@@ -42,5 +43,6 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 - sort-imports
+- ignore-comment
 
 
