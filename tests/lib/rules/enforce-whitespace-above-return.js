@@ -11,7 +11,6 @@ const ruleTester = new RuleTester({
 
 ruleTester.run("enforce-whitespace-above-return (react/jsx)", rule, {
   valid: [
-    // Functional component: blank line before return (OK)
     {
       filename: "valid-hello-blank-line.jsx",
       code: `
@@ -22,7 +21,6 @@ function Hello() {
 }
       `,
     },
-    // Functional component: return is first statement (exception)
     {
       filename: "valid-hello-no-blank-line.jsx",
       code: `
@@ -31,7 +29,6 @@ function Hello() {
 }
       `,
     },
-    // Class component: return is first statement in render() (exception)
     {
       filename: "valid-app-render-no-blank-line.jsx",
       code: `
@@ -42,7 +39,6 @@ class App extends React.Component {
 }
       `,
     },
-    // Inside a conditional block where return is first statement (exception)
     {
       filename: "valid-hello-conditional-no-blank-line.jsx",
       code: `
@@ -54,7 +50,6 @@ function Hello({ show }) {
 }
       `,
     },
-    // Callback body where return is first statement (exception)
     {
         filename: "valid-list-callback-no-blank-line.jsx",
       code: `
@@ -65,7 +60,6 @@ function List({ items }) {
 }
       `,
     },
-    // Inside a for loop where return is first statement (exception)
     {
       filename: "valid-for-loop-no-blank-line.jsx",
       code: `
@@ -81,7 +75,6 @@ function findItem(items, targetId) {
     },
   ],
   invalid: [
-    // Functional component: missing blank line before return
     {
         filename: "invalid-hello-missing-blank-line.jsx",
       code: `
@@ -99,7 +92,6 @@ function Hello() {
       `,
       errors: [{ messageId: "missingWhitespace" }],
     },
-    // Class component render(): missing blank line before return
     {
         filename: "invalid-app-render-missing-blank-line.jsx",
       code: `
@@ -121,7 +113,6 @@ class App extends React.Component {
       `,
       errors: [{ messageId: "missingWhitespace" }],
     },
-    // Inner handler function: missing blank line before return
     {
       filename: "invalid-button-handle-missing-blank-line.jsx",
       code: `
