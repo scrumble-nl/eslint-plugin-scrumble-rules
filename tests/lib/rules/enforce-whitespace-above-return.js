@@ -147,5 +147,3 @@ function Button({ onClick }) {
     },
   ],
 });
-
-console.log("✅ All tests passed ✅");
