@@ -1,6 +1,6 @@
 # Eslint plugin scrumble rules
 
-Eslint plugin for custom rules used by Scrumble. Currently only import sorting is included
+Eslint plugin for custom rules used by Scrumble.
 
 ## Installation
 
@@ -13,7 +13,7 @@ npm i eslint --save-dev
 Next, install `@scrumble-nl/eslint-plugin-scrumble-rules`:
 
 ```sh
-npm i@scrumble-nl/eslint-plugin-scrumble-rules --save-dev
+npm i @scrumble-nl/eslint-plugin-scrumble-rules --save-dev
 ```
 
 ## Usage
@@ -35,7 +35,8 @@ Then configure the rules you want to use under the rules section.
 {
     "rules": {
         "@scrumble-nl/scrumble-rules/sort-imports": "warn",
-        "@scrumble-nl/scrumble-rules/ignore-comment": "warn"
+        "@scrumble-nl/scrumble-rules/ignore-comment": "warn",
+        "@scrumble-nl/scrumble-rules/enforce-whitespace-above-return": "warn"
     }
 }
 ```
@@ -44,5 +45,6 @@ Then configure the rules you want to use under the rules section.
 
 - sort-imports
 - ignore-comment
+- enforce-whitespace-above-return
 
 
