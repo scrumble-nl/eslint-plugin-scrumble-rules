@@ -73,6 +73,33 @@ function findItem(items, targetId) {
 }
       `,
         },
+        {
+            filename: 'valid-switch-only-return.js',
+            code: `
+function getHours(duration, maxHours) {
+  switch (duration) {
+    case EDuration.ALL_DAY:
+      return maxHours;
+    case EDuration.HALF_DAY:
+      return maxHours / 2;
+    default:
+      return 0;
+  }
+}
+      `,
+        },
+        {
+            filename: 'valid-try-catch-single-return.js',
+            code: `
+function load() {
+  try {
+    return window.localStorage.getItem("foo");
+  } catch {
+    return null;
+  }
+}
+      `,
+        },
     ],
     invalid: [
         {
@@ -132,6 +159,54 @@ function Button({ onClick }) {
     return ok;
   }
   return <button onClick={handle}>Go</button>;
+}
+      `,
+            errors: [{messageId: 'missingWhitespace'}],
+        },
+        {
+            filename: 'invalid-switch-missing-blank-line.js',
+            code: `
+function getHours(duration, maxHours) {
+  switch (duration) {
+    case EDuration.ALL_DAY:
+      const hours = maxHours;
+      return hours;
+  }
+}
+      `,
+            output: `
+function getHours(duration, maxHours) {
+  switch (duration) {
+    case EDuration.ALL_DAY:
+      const hours = maxHours;
+
+      return hours;
+  }
+}
+      `,
+            errors: [{messageId: 'missingWhitespace'}],
+        },
+        {
+            filename: 'invalid-try-missing-blank-line.js',
+            code: `
+function load() {
+  try {
+    const saved = window.localStorage.getItem(getStorageKey());
+    return saved ? JSON.parse(saved) : {};
+  } catch {
+    return {};
+  }
+}
+      `,
+            output: `
+function load() {
+  try {
+    const saved = window.localStorage.getItem(getStorageKey());
+
+    return saved ? JSON.parse(saved) : {};
+  } catch {
+    return {};
+  }
 }
       `,
             errors: [{messageId: 'missingWhitespace'}],
